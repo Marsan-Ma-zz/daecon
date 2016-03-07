@@ -1,0 +1,20 @@
+<table border=1 style="border-collapse: collapse;">
+  <tr>
+    <th>Host</th>
+    <th>URL</th>
+    <th>Title</th>
+    <th>Thumb</th>
+    <th>Grade</th>
+  </tr>
+  <% pages.each do |p| %>
+    <tr>
+      <td><%= p.host %></td>
+      <td><%= p.url %></td>
+      <td><a href="/api/test/<%= p.host %>?page=<%= p.id %>"><%= p.title %></a></td>
+      <td><a href="<%= p.thumb %>" target="_blank"><img src="<%= p.thumb %>" width="50" height="50" %></a></td>
+      <td><%= p.count %></td>
+    </tr>
+  <% end %>
+</table>
+<hr>
+

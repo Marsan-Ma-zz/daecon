@@ -1,0 +1,69 @@
+<% if @pages %>
+  <h2>Pages</h2>
+  <pre>
+    1. count為這一頁被看的次數
+    2. recommend即被推薦次數  不論User有沒有看到
+    3. accept為User看了推薦而且真的從推薦欄點進去的次數
+  </pre><hr>
+  <table border=1 style="border-collapse: collapse;">
+    <tr>
+      <th>Host</th>
+      <th>Title</th>
+      <th>Thumb</th>
+      <th>Count</th>
+      <th>Recommend</th>
+      <th>Accepted</th>
+    </tr>
+    <% @pages.each do |p| %>
+      <tr>
+        <td><%= p.host %></td>
+        <td><a href="/page/<%= p.id %>" ><%= p.title %></a></td>
+        <td><a href="<%= p.thumb %>" target="_blank"><img src="<%= p.thumb %>" width="50" height="50" %></a></td>
+        <td><%= p.count %></td>
+        <td><%= p.cast %></td>
+        <td><%= p.accept %></td>
+      </tr>
+    <% end %>
+  </table>
+  <hr>
+<% end %>
+
+<% if @users %>
+  <h2>Users</h2>
+  <table border=1 style="border-collapse: collapse;">
+    <tr>
+      <th>ID</th>
+      <th>updated</th>
+    </tr>
+    <% @users.each do |u| %>
+      <tr>
+        <td><a href="/user/<%= u.uuid %>"><%= u.uuid %></td>
+        <td><%= u.updated_at %></td>
+      </tr>
+    <% end %>
+  </table>
+  <hr>
+<% end %>
+
+<% if @views %>
+  <h2>Views</h2>
+  <table border=1 style="border-collapse: collapse;">
+    <tr>
+      <th>Host</th>
+      <th>User</th>
+      <th>Title</th>
+      <th>Thumb</th>
+      <th>Count</th>
+    </tr>
+    <% @views.each do |v| %>
+      <tr>
+        <td><%= v.page.host %></td>
+        <td><%= v.user.uuid %></td>
+        <td><a href="/page/<%= v.page.id %>" ><%= v.page.title %></a></td>
+        <td><a href="<%= v.page.thumb %>" target="_blank"><img src="<%= v.page.thumb %>" width="50" height="50" %></a></td>
+        <td><%= v.count %></td>
+      </tr>
+    <% end %>
+  </table>
+  <hr>
+<% end %>

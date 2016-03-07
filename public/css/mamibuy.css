@@ -1,0 +1,63 @@
+.pvarrow {
+  width: 30px; 
+  height: 40px; 
+  margin: 0px auto;
+  display: inline-block;
+  vertical-align: 180%;
+}
+.pva_left {background: transparent url(http://mamibuy.com.tw/images/prev-horizontal-new.png) no-repeat 0 0}
+.pva_left:hover {background-position: -32px 0;}
+.pva_left:active {background-position: -64px 0;}
+.pva_right {background: transparent url(http://mamibuy.com.tw/images/next-horizontal-new.png) no-repeat 0 0}
+.pva_right:hover {background-position: -32px 0;}
+.pva_right:active {background-position: -64px 0;}
+
+.pvwrapper {
+  padding: 10px 0;
+  margin: 0px auto;
+  width: 90%; 
+  background: #FDE5E2;
+  border: #F99E9F 1px solid; 
+  color: #F94F59;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.pvpagein {
+  float: right; 
+  margin-right:5%;
+}
+
+.pvtitle {
+  float: left; 
+  padding-left: 5%;
+}
+
+.pvhr {
+  border: none;
+  width: 95%;
+  background-color: #F99E9F;
+  height: 1px;
+}
+
+.pvtable {
+  table-layout: fixed; 
+  width: 90%; 
+  display: inline-block; 
+}
+.pvtable a:link { 
+  color: #F94F59;
+  text-decoration: none;
+}
+
+.pvtable td {
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+.pvitem img {max-width: 120px;}
+.pvitem p {
+  height: 30px; 
+  font-size: 14px;
+}

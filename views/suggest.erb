@@ -1,0 +1,51 @@
+<!--
+  [使用說明]     
+    1. 在Title標上id=pvtitle, 若此頁僅採樣使用者興趣但不納入規薦結果，請加上public屬性為false
+    2. 在代表此頁的img外加上span, 其id=pvthumb
+    3. Include script: <script src="http://api.expertdojo.com/javascript/main.span.js"></script>即可
+    4. 加上一個空的物件<div id="recommend_region" alg="11111"></div>就會產生推薦結果，其中alg為欲使用哪些演算法
+-->
+<table border=1 style="table-layout:fixed; width:100%; background: WhiteSmoke;">
+  <tr>
+    <td colspan=2>
+      <p>
+        User (使用者): <%= cookies[:pvuid] %>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Page (目前瀏覽的商品)
+      <a href="/<%= @page.host %>/suggest?page=<%= @page.id %>"></h3>
+        <span id="pvtitle" url="<%= @page.url %>" host="<%= @page.host %>" demo="true"><%= @page.title %></span>
+        <%= '(' + @page.count.to_s + ')' %><br>
+        <span id="pvthumb"><img src="<%= @page.thumb %>" width=120 height=120></span>
+      </a>
+    </td>
+    <td>
+      <h3>History (過去瀏覽的商品) <a href="/<%= @page.host %>/suggest?page=<%= @page.id %>&clean=true" onclick="clear_uuid()">清除</a></h3>
+      <% if @history %>
+        <% @history[0..9].each do |p| %>
+          <a href="/<%= p.host %>/suggest?page=<%= p.id %>">
+            <%= p.title + '(' + p.count.to_s + ')' %>
+          </a><br>
+        <% end %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2>
+      <pre> <b>以下為四種演算法推算出的推薦商品，1、2為以商品為中心的推薦，3、4為以使用者為中心的推薦</b>
+      1. 類似推薦：和此商品相似的商品(Item => Features => Items，精準度取決於資料庫中的商品數)
+      2. 喜歡這個的人也喜歡這些：對此商品感興趣的人，也喜歡下列商品(Item => Group => Items，精準度取決於其他顧客累積瀏覽行為)
+      3. 我猜你喜歡這些：根據你的所有瀏覽偏好而推荐的商品(User => Features => Items，精準度取決於你自己的瀏覽歷史)
+      4. 和你興趣相似的人也喜歡這些：和你相似的人也有興趣的商品(User => Group => Items, 精準度取決於其他顧客累積瀏覽數&你自己的瀏覽歷史)
+      5. 綜合推薦：總和上述四種演算法結果中，人氣最高的商品
+      </pre>
+    </td>
+  </tr>
+</table>
+
+<div id="recommend_region" alg="11111"></div>
+<!-- -----Script------------------------------------------------- -->
+<script src="/javascript/main.js"></script>
