@@ -9,7 +9,7 @@ There are 5 different idea to implement recommendations.
 You can click on any item and see the change on items recommended to you!
 
 
-# Usage
+## Usage
 
 [SERVER]
 ruby ./app.rb
@@ -29,11 +29,11 @@ open(filename, 'w') do |f|
 end
 
 [DATABASE backup]
-# Dump selected database in current path
+#### Dump selected database in current path
 mongodump --db deacon_api
-# Drop database to clean all
+#### Drop database to clean all
 mongo deacon_api --eval "db.dropDatabase()"
-# Recover selected database from assigned path
+#### Recover selected database from assigned path
 mongorestore --db deacon_api ./dump/deacon_api/
 
 
