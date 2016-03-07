@@ -3,7 +3,7 @@
 It's written in Ruby and Sinatra, 
 using the idea of collaborative filtering and extract keywords to do simple topic modeling.
 See the online demo: 
-## http://deacon.herokuapp.com/mamibuy
+http://deacon.herokuapp.com/mamibuy/suggest
 
 There are 5 different idea to implement recommendations. 
 You can click on any item and see the change on items recommended to you!
